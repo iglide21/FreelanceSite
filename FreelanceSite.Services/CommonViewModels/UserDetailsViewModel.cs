@@ -26,7 +26,7 @@
 
         public string PhoneNumber { get; set; }
 
-        public List<ProjectDetailsViewModel> Projects { get; set; }
+        public List<UserProjectDetailsViewModel> Projects { get; set; }
 
 
         public void Configure(Profile profile)

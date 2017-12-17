@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelanceSite.Web", "FreelanceSite.Web\FreelanceSite.Web.csproj", "{318BBD60-F0EC-4908-9BC8-F809321408BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreelanceSite.Web", "FreelanceSite.Web\FreelanceSite.Web.csproj", "{318BBD60-F0EC-4908-9BC8-F809321408BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelanceSite.Data", "FreelanceSite.Data\FreelanceSite.Data.csproj", "{FCE89626-8268-4243-A697-B2D65A785C0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreelanceSite.Data", "FreelanceSite.Data\FreelanceSite.Data.csproj", "{FCE89626-8268-4243-A697-B2D65A785C0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelanceSite.Entities", "FreelanceSite.Entities\FreelanceSite.Entities.csproj", "{3540B28B-603C-4891-BADF-B2F08504B8DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreelanceSite.Entities", "FreelanceSite.Entities\FreelanceSite.Entities.csproj", "{3540B28B-603C-4891-BADF-B2F08504B8DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelanceSite.Infrastructure", "FreelanceSite.Infrastructure\FreelanceSite.Infrastructure.csproj", "{8F57F0E4-FFB0-4E1E-B858-CCD011265D90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreelanceSite.Infrastructure", "FreelanceSite.Infrastructure\FreelanceSite.Infrastructure.csproj", "{8F57F0E4-FFB0-4E1E-B858-CCD011265D90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelanceSite.Services", "FreelanceSite.Services\FreelanceSite.Services.csproj", "{599A97E4-9B8D-495F-804F-0F27535D7855}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreelanceSite.Services", "FreelanceSite.Services\FreelanceSite.Services.csproj", "{599A97E4-9B8D-495F-804F-0F27535D7855}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

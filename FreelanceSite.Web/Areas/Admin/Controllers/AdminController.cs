@@ -11,9 +11,5 @@ namespace FreelanceSite.Web.Areas.Admin.Controllers
     [Authorize(Roles = AdministratorRole)]
     public class AdminController : Controller
     {
-        public IActionResult Index()
-        {
-            return this.View();
-        }
     }
 }

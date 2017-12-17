@@ -11,21 +11,21 @@
     public class ProjectsController : Controller
     {
         private readonly IBudgetService budgets;
-        private readonly IWorkService works;
+        private readonly IWorkService projects;
         private readonly ICategoryService categories;
         private readonly UserManager<User> userManager;
 
         public ProjectsController(IBudgetService budgets, IWorkService works, UserManager<User> userManager, ICategoryService categories)
         {
             this.budgets = budgets;
-            this.works = works;
+            this.projects = works;
             this.categories = categories;
             this.userManager = userManager;
         }
 
         public IActionResult All()
         {
-            var projects = this.works.AllProjects();
+            var projects = this.projects.AllProjects();
 
             return this.View(projects);
         }
@@ -45,7 +45,7 @@
                 return this.View(model);
             }
 
-            this.works.CreateProject(this.User.Identity.Name, model.Title, model.Description, model.Budget.Id, model.Skills, model.Categories);
+            this.projects.CreateProject(this.User.Identity.Name, model.Title, model.Description, model.Budget.Id, model.Skills, model.Categories);
 
             this.TempData["SuccessMessage"] = "Project created successfully. Go to \"My Projects\" to view your projects.";
 
@@ -54,7 +54,7 @@
 
         public IActionResult Edit(int? id)
         {
-            bool exists = this.works.Exists(id);
+            bool exists = this.projects.Exists(id);
 
             if (!exists)
             {
@@ -63,7 +63,7 @@
 
             this.BudgetsAndCategoriesToViewBag();
 
-            var project = this.works.GetProjectForEdit(id);
+            var project = this.projects.GetProjectForEdit(id);
 
             return this.View(project);
         }
@@ -76,7 +76,7 @@
                 return this.View(model);
             }
 
-            this.works.Update(model.Id, model.Title, model.Description, model.Skills, model.ProjectCategories, model.Budget);
+            this.projects.Update(model.Id, model.Title, model.Description, model.Skills, model.ProjectCategories, model.Budget);
 
             this.TempData["SuccessMessage"] = "Project edited successfully. Go to \"My Projects\" to view your projects.";
 
@@ -90,7 +90,7 @@
                 return this.RedirectToAction(nameof(All));
             }
 
-            bool deleted = this.works.Remove(id);
+            bool deleted = this.projects.Remove(id);
 
             if (deleted == true)
             {
@@ -101,7 +101,12 @@
             return this.RedirectToAction(nameof(All));
         }
 
+        public IActionResult Details(int? id)
+        {
+            var project = this.projects.GetProjectDetails(id);
 
+            return this.View();
+        }
 
         private void BudgetsAndCategoriesToViewBag()
         {

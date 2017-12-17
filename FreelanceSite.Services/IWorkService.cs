@@ -7,8 +7,8 @@
     public interface IWorkService
     {
         void CreateProject(string userName,
-            string modelTitle, 
-            string modelDescription, 
+            string modelTitle,
+            string modelDescription,
             int modelBudgetId,
             string modelSkills,
             IEnumerable<int> categories);
@@ -20,6 +20,9 @@
         EditProjectViewModel GetProjectForEdit(int? id);
 
         void Update(int id, string title, string description, string skills, List<int> categories, BudgetViewModel budget);
+
         bool Remove(int? id);
+
+        ProjectDetailsViewModel GetProjectDetails(int? id);
     }
 }

@@ -128,5 +128,12 @@
 
             return true;
         }
+
+        public ProjectDetailsViewModel GetProjectDetails(int? id)
+        => this.db
+            .Projects
+            .Where(p => p.Id == id)
+            .ProjectTo<ProjectDetailsViewModel>()
+            .SingleOrDefault();
     }
 }
