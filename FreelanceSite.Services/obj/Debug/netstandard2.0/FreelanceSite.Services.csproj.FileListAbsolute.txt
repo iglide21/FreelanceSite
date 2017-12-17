@@ -1,0 +1,17 @@
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\bin\Debug\netstandard2.0\FreelanceSite.Services.deps.json
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\bin\Debug\netstandard2.0\FreelanceSite.Services.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\bin\Debug\netstandard2.0\FreelanceSite.Services.pdb
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\bin\Debug\netstandard2.0\FreelanceSite.Data.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\bin\Debug\netstandard2.0\FreelanceSite.Entities.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\bin\Debug\netstandard2.0\FreelanceSite.Infrastructure.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\bin\Debug\netstandard2.0\FreelanceSite.Data.pdb
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\bin\Debug\netstandard2.0\FreelanceSite.Entities.pdb
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\bin\Debug\netstandard2.0\FreelanceSite.Infrastructure.pdb
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\obj\Debug\netstandard2.0\FreelanceSite.Services.csprojResolveAssemblyReference.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\obj\Debug\netstandard2.0\FreelanceSite.Services.csproj.CoreCompileInputs.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\obj\Debug\netstandard2.0\FreelanceSite.Services.AssemblyInfoInputs.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\obj\Debug\netstandard2.0\FreelanceSite.Services.AssemblyInfo.cs
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\obj\Debug\netstandard2.0\FreelanceSite.Services.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\obj\Debug\netstandard2.0\FreelanceSite.Services.pdb
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Services\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.xml

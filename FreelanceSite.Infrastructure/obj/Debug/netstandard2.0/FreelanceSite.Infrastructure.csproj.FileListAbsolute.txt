@@ -1,0 +1,11 @@
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Infrastructure\bin\Debug\netstandard2.0\FreelanceSite.Infrastructure.deps.json
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Infrastructure\bin\Debug\netstandard2.0\FreelanceSite.Infrastructure.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Infrastructure\bin\Debug\netstandard2.0\FreelanceSite.Infrastructure.pdb
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Infrastructure\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Infrastructure\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.xml
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Infrastructure\obj\Debug\netstandard2.0\FreelanceSite.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Infrastructure\obj\Debug\netstandard2.0\FreelanceSite.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Infrastructure\obj\Debug\netstandard2.0\FreelanceSite.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Infrastructure\obj\Debug\netstandard2.0\FreelanceSite.Infrastructure.AssemblyInfo.cs
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Infrastructure\obj\Debug\netstandard2.0\FreelanceSite.Infrastructure.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Infrastructure\obj\Debug\netstandard2.0\FreelanceSite.Infrastructure.pdb

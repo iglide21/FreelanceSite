@@ -1,0 +1,15 @@
+﻿@if (this.TempData["SuccessMessage"] != null)
+{
+    <br />
+    <div class="row">
+        <p class="row jumbotron text-success text-center col-md-offset-4 col-md-4">@this.TempData["SuccessMessage"]</p>
+    </div>
+}
+
+@if (this.TempData["DeleteMessage"] != null)
+{
+    <br />
+    <div class="row">
+        <p class="jumbotron text-danger text-center col-md-offset-4 col-md-4">@this.TempData["DeleteMessage"]</p>
+    </div>
+}   

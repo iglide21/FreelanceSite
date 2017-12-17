@@ -1,0 +1,11 @@
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Entities\bin\Debug\netstandard2.0\FreelanceSite.Entities.deps.json
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Entities\bin\Debug\netstandard2.0\FreelanceSite.Entities.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Entities\obj\Debug\netstandard2.0\FreelanceSite.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Entities\obj\Debug\netstandard2.0\FreelanceSite.Entities.AssemblyInfoInputs.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Entities\obj\Debug\netstandard2.0\FreelanceSite.Entities.AssemblyInfo.cs
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Entities\bin\Debug\netstandard2.0\FreelanceSite.Entities.pdb
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Entities\obj\Debug\netstandard2.0\FreelanceSite.Entities.csprojResolveAssemblyReference.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Entities\obj\Debug\netstandard2.0\FreelanceSite.Entities.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Entities\obj\Debug\netstandard2.0\FreelanceSite.Entities.pdb
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Entities\bin\Debug\netstandard2.0\FreelanceSite.Infrastructure.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Entities\bin\Debug\netstandard2.0\FreelanceSite.Infrastructure.pdb

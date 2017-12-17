@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AdminProjectListingViewModel>
+
+@Html.Partial("_MessagesPartial")
+
+<br />
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New Project</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Owner
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Budget
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Owner
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Description.Substring(0,3)...
+                </td>
+                <td>
+                    @item.Budget.LowerBound - @item.Budget.HigherBound
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+<a class="btn btn-default" asp-controller="Admin" asp-action="Index">Back to list</a>

@@ -1,0 +1,23 @@
+﻿@model EditProjectViewModel
+<h2 class="text-center">Edit project @Model.Title</h2>
+<hr />
+<div class="row">
+    <div class="col-md-offset-4 col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(model => model.Id)
+            @Html.Partial("_WorkEditPartial", Model)
+
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="All">Back to List</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

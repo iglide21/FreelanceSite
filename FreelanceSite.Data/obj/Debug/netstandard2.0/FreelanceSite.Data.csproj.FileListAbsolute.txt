@@ -1,0 +1,13 @@
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\bin\Debug\netstandard2.0\FreelanceSite.Data.deps.json
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\bin\Debug\netstandard2.0\FreelanceSite.Data.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\obj\Debug\netstandard2.0\FreelanceSite.Data.csprojResolveAssemblyReference.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\obj\Debug\netstandard2.0\FreelanceSite.Data.csproj.CoreCompileInputs.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\obj\Debug\netstandard2.0\FreelanceSite.Data.AssemblyInfoInputs.cache
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\obj\Debug\netstandard2.0\FreelanceSite.Data.AssemblyInfo.cs
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\bin\Debug\netstandard2.0\FreelanceSite.Entities.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\bin\Debug\netstandard2.0\FreelanceSite.Entities.pdb
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\bin\Debug\netstandard2.0\FreelanceSite.Data.pdb
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\obj\Debug\netstandard2.0\FreelanceSite.Data.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\obj\Debug\netstandard2.0\FreelanceSite.Data.pdb
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\bin\Debug\netstandard2.0\FreelanceSite.Infrastructure.dll
+C:\Users\Petio\Documents\Visual Studio 2017\Projects\FreelanceSite\FreelanceSite.Data\bin\Debug\netstandard2.0\FreelanceSite.Infrastructure.pdb
