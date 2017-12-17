@@ -1,5 +1,6 @@
 ﻿namespace FreelanceSite.Web.Controllers
 {
+    using FreelanceSite.Data;
     using FreelanceSite.Entities;
     using FreelanceSite.Web.ViewModels.ManageViewModels;
     using Microsoft.AspNetCore.Authentication;
@@ -17,6 +18,7 @@
     [Route("[controller]/[action]")]
     public class ManageController : Controller
     {
+        private readonly FreelanceSiteDbContext db;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger _logger;
@@ -28,12 +30,14 @@
           UserManager<User> userManager,
           SignInManager<User> signInManager,
           ILogger<ManageController> logger,
-          UrlEncoder urlEncoder)
+          UrlEncoder urlEncoder,
+          FreelanceSiteDbContext db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _urlEncoder = urlEncoder;
+            this.db = db;
         }
 
         [TempData]
@@ -43,6 +47,7 @@
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -54,6 +59,7 @@
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
+                Biography = user.Biography,
                 StatusMessage = StatusMessage
             };
 
@@ -94,6 +100,10 @@
                     throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
                 }
             }
+
+            user.Biography = model.Biography;
+
+            this.db.SaveChanges();
 
             StatusMessage = "Your profile has been updated";
             return RedirectToAction(nameof(Index));

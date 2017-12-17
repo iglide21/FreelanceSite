@@ -6,7 +6,7 @@
 
     public interface IWorkService
     {
-        void CreateProject(string userId,
+        void CreateProject(string userName,
             string modelTitle, 
             string modelDescription, 
             int modelBudgetId,

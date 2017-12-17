@@ -45,9 +45,7 @@
                 return this.View(model);
             }
 
-            var userId = this.userManager.GetUserId(this.User);
-
-            this.works.CreateProject(userId, model.Title, model.Description, model.Budget.Id, model.Skills, model.Categories);
+            this.works.CreateProject(this.User.Identity.Name, model.Title, model.Description, model.Budget.Id, model.Skills, model.Categories);
 
             this.TempData["SuccessMessage"] = "Project created successfully. Go to \"My Projects\" to view your projects.";
 

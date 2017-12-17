@@ -13,6 +13,7 @@ namespace FreelanceSite.Web.Extensions
     using System.Threading.Tasks;
     using FreelanceSite.Web.ViewModels.AccountViewModels;
     using static GlobalConstants;
+    using System;
 
     public static class ApplicationBuilderExtensions
     {
@@ -59,7 +60,10 @@ namespace FreelanceSite.Web.Extensions
                             UserName = "Admin",
                             FirstName = "Admin",
                             LastName = "Admin",
-                            Role = "Administrator"
+                            Role = "Administrator",
+                            RegisteredOn = DateTime.Now,
+                            LastSeen = DateTime.Now,
+                            Biography = "Just admin",
                         };
 
                         await userManager.CreateAsync(adminUser, "asdasd");

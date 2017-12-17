@@ -1,5 +1,6 @@
 ﻿namespace FreelanceSite.Web.Controllers
 {
+    using FreelanceSite.Data;
     using FreelanceSite.Entities;
     using FreelanceSite.Web.ViewModels.AccountViewModels;
     using Microsoft.AspNetCore.Authentication;
@@ -8,6 +9,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using System;
+    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -15,6 +17,7 @@
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
+        private readonly FreelanceSiteDbContext db;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger _logger;
@@ -22,11 +25,13 @@
         public AccountController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            FreelanceSiteDbContext db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            this.db = db;
         }
 
         [TempData]
@@ -54,6 +59,11 @@
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
+
+                var user = db.Users.SingleOrDefault(u => u.UserName == model.UserName);
+                user.LastSeen = DateTime.Now;
+                db.SaveChanges();
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
@@ -212,7 +222,15 @@
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.UserName,FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, Role = "Freelancer"};
+                var user = new User {
+                    UserName = model.UserName,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Role = "Freelancer",
+                    RegisteredOn = DateTime.Now,
+                    LastSeen = DateTime.Now
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

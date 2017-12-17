@@ -12,13 +12,13 @@ namespace FreelanceSite.Entities
         public int Id { get; set; }
 
         [Required]
-        [MinLength(WorkDetailTitleMinLength)]
-        [MaxLength(WorkDetailTitleMaxLength)]
+        [MinLength(ProjectTitleMinLength)]
+        [MaxLength(ProjectTitleMaxLength)]
         public string Title { get; set; }
 
         [Required]
-        [MinLength(WorkDetailDescriptionMinLength)]
-        [MaxLength(WorkDetailDescriptionMaxLength)]
+        [MinLength(ProjectDescriptionMinLength)]
+        [MaxLength(ProjectDescriptionMaxLength)]
         public string Description { get; set; }
 
         public int BudgetId { get; set; }

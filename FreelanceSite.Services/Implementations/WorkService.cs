@@ -20,9 +20,9 @@
         }
 
 
-        public void CreateProject(string userId, string modelTitle, string modelDescription, int modelBudgetId, string modelSkills, IEnumerable<int> categories)
+        public void CreateProject(string userName, string modelTitle, string modelDescription, int modelBudgetId, string modelSkills, IEnumerable<int> categories)
         {
-            var user = this.db.Users.FirstOrDefault(u => u.Id == userId);
+            var user = this.db.Users.FirstOrDefault(u => u.UserName == userName);
 
             var project = new Project
             {

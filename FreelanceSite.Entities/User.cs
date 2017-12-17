@@ -3,6 +3,7 @@
 namespace FreelanceSite.Entities
 {
     using Microsoft.AspNetCore.Identity;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -23,5 +24,11 @@ namespace FreelanceSite.Entities
         public List<Project> Projects { get; set; }
 
         public string Role { get; set; }
+
+        public DateTime RegisteredOn { get; set; }
+
+        public DateTime LastSeen { get; set; }
+
+        public string Biography { get; set; }
     }
 }

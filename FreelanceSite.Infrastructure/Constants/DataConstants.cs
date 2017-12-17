@@ -17,16 +17,13 @@
         public const int CategoryTitleMinLength = 2;
         public const int CategoryTitleMaxLength = 30;
 
-        public const int ContestMinDays = 1;
-        public const int ContestMaxDays = 60;
+        public const int ProjectTitleMinLength = 20;
+        public const int ProjectTitleMaxLength = 50;
 
-        public const int JobLocationMinLength = 5;
-        public const int JobLocationMaxLength = 30;
+        public const int ProjectDescriptionMinLength = 30;
+        public const int ProjectDescriptionMaxLength = 500;
 
-        public const int WorkDetailTitleMinLength = 5;
-        public const int WorkDetailTitleMaxLength = 30;
-
-        public const int WorkDetailDescriptionMinLength = 20;
-        public const int WorkDetailDescriptionMaxLength = 500;
+        public const int UserBioMinLength = 20;
+        public const int UserBioMaxLength = 300;
     }
 }

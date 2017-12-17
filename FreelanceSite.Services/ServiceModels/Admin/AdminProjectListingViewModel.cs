@@ -6,7 +6,7 @@
 
     public class AdminProjectListingViewModel : IMapFrom<Project>, IHaveCustomMapping
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Owner { get; set; }
 

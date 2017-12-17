@@ -28,7 +28,7 @@
         {
             <tr>
                 <td>
-                    @item.Owner
+                    <a asp-controller="Users" asp-action="Details" asp-route-username="@item.Owner">@item.Owner</a>
                 </td>
                 <td>
                     @item.Title
