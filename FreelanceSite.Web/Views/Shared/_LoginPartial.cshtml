@@ -14,7 +14,16 @@
                 </li>
             }
             <li>
-                <a asp-area="" asp-controller="Projects" asp-action="All" title="Manage">All Projects</a>
+                @*<div class="dropdown">*@
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        Projects
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a asp-controller="Projects" asp-action="All">All</a></li>
+                        <li><a asp-controller="Projects" asp-action="Create">Create</a></li>
+                    </ul>
+                @*</div>*@
             </li>
             <li>
                 <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
