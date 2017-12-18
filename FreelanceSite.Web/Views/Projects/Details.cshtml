@@ -1,0 +1,48 @@
+﻿@model FreelanceSite.Services.CommonViewModels.ProjectDetailsViewModel
+
+<div>
+    <h4>ProjectDetailsViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Skills)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Skills)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Budget.LowerBound)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Budget.LowerBound)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Budget.HigherBound)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Budget.HigherBound)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    <a asp-action="Index">Back to List</a>
+</div>

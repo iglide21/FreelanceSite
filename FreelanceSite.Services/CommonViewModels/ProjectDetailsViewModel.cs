@@ -6,6 +6,8 @@
 
     public class ProjectDetailsViewModel : IMapFrom<Project>, IHaveCustomMapping
     {
+        public int Id { get; set; }
+
         public BudgetViewModel Budget { get; set; }
 
         public string Title { get; set; }
@@ -14,7 +16,7 @@
 
         public string Description { get; set; }
 
-        public string OwnerId { get; set; }
+        public string UserId { get; set; }
 
         public void Configure(Profile profile)
         {

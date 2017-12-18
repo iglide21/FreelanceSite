@@ -105,7 +105,7 @@
         {
             var project = this.projects.GetProjectDetails(id);
 
-            return this.View();
+            return this.View(project);
         }
 
         private void BudgetsAndCategoriesToViewBag()
