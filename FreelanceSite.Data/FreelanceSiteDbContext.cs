@@ -19,6 +19,8 @@
 
         public DbSet<ProjectsCategories> ProjectsCategories { get; set; }
 
+        public DbSet<Bid> Bids { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -50,6 +52,18 @@
                .WithMany(p => p.Categories)
                .HasForeignKey(c => c.ProjectId)
                .OnDelete(DeleteBehavior.Cascade);
+
+            builder
+                .Entity<Project>()
+                .HasMany(p => p.Bids)
+                .WithOne(b => b.Project)
+                .HasForeignKey(b => b.ProjectId);
+
+            builder
+                .Entity<User>()
+                .HasMany(u => u.Bids)
+                .WithOne(b => b.User)
+                .HasForeignKey(b => b.UserId);
 
             base.OnModelCreating(builder);
         }

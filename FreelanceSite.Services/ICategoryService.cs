@@ -6,5 +6,6 @@
     public interface ICategoryService
     {
         IEnumerable<CategoryListingViewModel> GetAll();
+        CategoryEditViewModel GetForEdit(int? id);
     }
 }

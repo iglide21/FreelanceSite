@@ -43,6 +43,7 @@
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IAdminUserService, AdminUserService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IBidService, BidService>();
 
 
             Mapper.Initialize(cfg => cfg.AddProfile<AutoMapperProfile>());

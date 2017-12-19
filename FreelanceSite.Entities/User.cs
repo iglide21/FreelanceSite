@@ -23,6 +23,8 @@ namespace FreelanceSite.Entities
 
         public List<Project> Projects { get; set; }
 
+        public List<Bid> Bids { get; set; }
+
         public string Role { get; set; }
 
         public DateTime RegisteredOn { get; set; }

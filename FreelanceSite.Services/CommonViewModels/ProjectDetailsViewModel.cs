@@ -3,6 +3,8 @@
     using AutoMapper;
     using FreelanceSite.Entities;
     using FreelanceSite.Infrastructure.Mapping;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ProjectDetailsViewModel : IMapFrom<Project>, IHaveCustomMapping
     {
@@ -18,10 +20,14 @@
 
         public string UserId { get; set; }
 
+        public List<Bid> Bids { get; set; }
+
         public void Configure(Profile profile)
         {
             profile.CreateMap<Project, ProjectDetailsViewModel>()
-                .ForMember(cfg => cfg.Budget, opt => opt.MapFrom(p => p.Budget));
+                //.Include(typeof(BidAddViewModel),typeof(ProjectDetailsViewModel))
+                .ForMember(cfg => cfg.Budget, opt => opt.MapFrom(p => p.Budget))
+                .ForMember(cfg => cfg.Bids, opt => opt.MapFrom(p => p.Bids));
         }
     }
 }

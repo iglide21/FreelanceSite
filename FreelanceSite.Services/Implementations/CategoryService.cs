@@ -23,6 +23,13 @@
             .ToList();
 
             return categories;
-        } 
+        }
+
+        public CategoryEditViewModel GetForEdit(int? id)
+            => this.db
+                   .Categories
+                   .Where(c => c.Id == id)
+                   .ProjectTo<CategoryEditViewModel>()
+                   .FirstOrDefault();
     }
 }

@@ -4,16 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace FreelanceSite.Data.Migrations
 {
     [DbContext(typeof(FreelanceSiteDbContext))]
-    partial class FreelanceSiteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171219162119_AddedBidsToProjectsAndUsers")]
+    partial class AddedBidsToProjectsAndUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
