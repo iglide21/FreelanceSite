@@ -34,6 +34,6 @@ namespace FreelanceSite.Entities
 
         public User User { get; set; }
 
-        public IEnumerable<Bid> Bids { get; set; } = new List<Bid>();
+        public List<Bid> Bids { get; set; } = new List<Bid>();
     }
 }

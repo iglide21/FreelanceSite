@@ -20,12 +20,14 @@
 
         public string UserId { get; set; }
 
+        public string UserName { get; set; }
+
         public List<Bid> Bids { get; set; }
 
         public void Configure(Profile profile)
         {
             profile.CreateMap<Project, ProjectDetailsViewModel>()
-                //.Include(typeof(BidAddViewModel),typeof(ProjectDetailsViewModel))
+                .ForMember(cfg => cfg.UserName, opt => opt.MapFrom(p => p.User.UserName))
                 .ForMember(cfg => cfg.Budget, opt => opt.MapFrom(p => p.Budget))
                 .ForMember(cfg => cfg.Bids, opt => opt.MapFrom(p => p.Bids));
         }

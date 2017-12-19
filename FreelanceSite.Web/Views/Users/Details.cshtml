@@ -43,7 +43,15 @@
                 <li class="list-group-item text-right">
                     <span class="pull-left">
                         <strong class="">Phone number:</strong>
-                    </span> @Model.PhoneNumber
+                    </span>
+                    @if (string.IsNullOrEmpty(Model.PhoneNumber))
+                    {
+                        <p>No phone number</p>
+                    }
+                    else
+                    {
+                        @Model.PhoneNumber
+                    }
                 </li>
             </ul>
 
@@ -92,29 +100,36 @@
                 <div class="panel-heading" contenteditable="false">My projects</div>
                 <div class="panel-body">
                     <div class="row">
-                        @foreach (var item in Model.Projects)
+                        @if (Model.Projects.Count > 0)
                         {
-                            <a asp-controller="Projects" asp-action="Details" asp-route-id="@item.Id">
-                                <div class="col-md-4">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <h3 class="row text-center">
-                                                @item.Title.Substring(0, 15)...
-                                            </h3>
-                                            <p class="row text-center">
-                                                @if (item.Description.Length <= 50)
-                                                {
-                                                    @item.Description
-                                                }
-                                                else
-                                                {
-                                                    @item.Description.Substring(0, 50)
-                                                }
-                                            </p>
+                            @foreach (var item in Model.Projects)
+                            {
+                                <a asp-controller="Projects" asp-action="Details" asp-route-id="@item.Id">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <div class="caption">
+                                                <h3 class="row text-center">
+                                                    @item.Title.Substring(0, 15)...
+                                                </h3>
+                                                <p class="row text-center">
+                                                    @if (item.Description.Length <= 49)
+                                                    {
+                                                        @item.Description
+                                                    }
+                                                    else
+                                                    {
+                                                        @item.Description.Substring(0, 50)
+                                                    }
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            }
+                        }
+                        else
+                        {
+                            <h1 class="text-center">@Model.UserName have no projects yet</h1>
                         }
                     </div>
                 </div>

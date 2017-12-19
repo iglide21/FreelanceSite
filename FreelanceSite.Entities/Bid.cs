@@ -14,6 +14,8 @@ namespace FreelanceSite.Entities
         [Range(0,90, ErrorMessage = "Period for the project to be done have to be between 0 and 90 days")]
         public int Period { get; set; } //in days
 
+        public string OwnerUserName { get; set; }
+
         public string UserId { get; set; }
 
         public User User { get; set; }

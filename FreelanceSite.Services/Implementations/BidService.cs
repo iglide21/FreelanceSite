@@ -26,6 +26,7 @@
                 Value = value,
                 User = user,
                 UserId = user.Id,
+                OwnerUserName = ownerUsername,
                 ProjectId = project.Id,
                 Project = project
             };

@@ -61,8 +61,11 @@
                 var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
 
                 var user = db.Users.SingleOrDefault(u => u.UserName == model.UserName);
-                user.LastSeen = DateTime.Now;
-                db.SaveChanges();
+                if (user != null)
+                {
+                    user.LastSeen = DateTime.Now;
+                    db.SaveChanges();
+                }
 
                 if (result.Succeeded)
                 {
@@ -222,7 +225,8 @@
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new User {
+                var user = new User
+                {
                     UserName = model.UserName,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
