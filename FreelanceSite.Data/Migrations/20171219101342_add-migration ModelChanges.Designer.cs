@@ -11,9 +11,10 @@ using System;
 namespace FreelanceSite.Data.Migrations
 {
     [DbContext(typeof(FreelanceSiteDbContext))]
-    partial class FreelanceSiteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171219101342_add-migration ModelChanges")]
+    partial class addmigrationModelChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
