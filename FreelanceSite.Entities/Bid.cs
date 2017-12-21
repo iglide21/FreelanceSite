@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FreelanceSite.Entities
 {
@@ -15,6 +16,8 @@ namespace FreelanceSite.Entities
         public int Period { get; set; } //in days
 
         public string OwnerUserName { get; set; }
+
+        public DateTime CreationDate { get; set; }
 
         public string UserId { get; set; }
 

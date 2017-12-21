@@ -3,10 +3,12 @@
     using FreelanceSite.Entities;
     using FreelanceSite.Services;
     using FreelanceSite.Services.CommonViewModels;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Linq;
+    using System;
 
     public class ProjectsController : Controller
     {
@@ -23,13 +25,26 @@
             this.userManager = userManager;
         }
 
-        public IActionResult All()
+        public IActionResult All(int? categoryId, string searchTerm = "")
         {
-            var projects = this.projects.AllProjects();
+            var projects = this.projects.AllActiveProjects(categoryId, searchTerm ?? "");
+
+            if (categoryId != null)
+            {
+                var categoryName = this.categories.GetById(categoryId);
+                ViewBag.SelectedCategoryName = categoryName;
+                ViewBag.SelectedCategoryId = categoryId;
+            }
+
+
+            ViewBag.SearchTerm = searchTerm;
+
+            this.BudgetsAndCategoriesToViewBag();
 
             return this.View(projects);
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             this.BudgetsAndCategoriesToViewBag();
@@ -38,6 +53,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create(CreateProjectViewModel model)
         {
             if (!this.ModelState.IsValid)
@@ -47,17 +63,24 @@
 
             this.projects.CreateProject(this.User.Identity.Name, model.Title, model.Description, model.Budget.Id, model.Skills, model.Categories);
 
-            this.TempData["SuccessMessage"] = "Project created successfully. Go to \"My Projects\" to view your projects.";
+            this.TempData["SuccessMessage"] = "Project created successfully. Go to \"My Profile\" to view your projects.";
 
             return this.RedirectToAction(nameof(All));
         }
 
+        [Authorize]
         public IActionResult Edit(int? id)
         {
+            if (!CanProceed(id))
+            {
+                return this.RedirectToAction(nameof(All));
+            }
+
             bool exists = this.projects.Exists(id);
 
             if (!exists)
             {
+                this.TempData["NotExisting"] = "This project do not exists or it is not active.";
                 return this.RedirectToAction(nameof(All));
             }
 
@@ -69,6 +92,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(EditProjectViewModel model)
         {
             if (!this.ModelState.IsValid)
@@ -83,18 +107,20 @@
             return this.RedirectToAction(nameof(All));
         }
 
+        [Authorize]
         public IActionResult Delete(int? id)
         {
-            if (id == null)
+            if (!CanProceed(id))
             {
                 return this.RedirectToAction(nameof(All));
             }
 
-            bool deleted = this.projects.Remove(id);
+            string projectName = this.projects.GetProjectNameById(id);
+            bool deleted = this.projects.SetUnactive(id);
 
             if (deleted == true)
             {
-                this.TempData["DeleteMessage"] = $"Project with id {id} was deleted.";
+                this.TempData["DeleteMessage"] = $"Your project {projectName} was deleted.";
                 return this.RedirectToAction(nameof(All));
             }
 
@@ -105,7 +131,35 @@
         {
             var project = this.projects.GetProjectDetails(id);
 
+            if (project == null)
+            {
+                this.TempData["NotExisting"] = "Project do not exists or it is not active.";
+                return this.RedirectToAction(nameof(All));
+            }
+
             return this.View(project);
+        }
+
+        private bool CanProceed(int? id)
+        {
+            if (this.User.IsInRole("Administrator") || this.User.IsInRole("Moderator"))
+            {
+                return true;
+            }
+
+            return this.projects.IsActive(id) && IsAllowedToDo(id);
+        }
+
+        private bool IsAllowedToDo(int? id)
+        {
+            if (id == null)
+            {
+                this.RedirectToAction(nameof(All));
+            }
+
+            var userUserName = this.User.Identity.Name;
+
+            return this.projects.IsOwner(id, userUserName);
         }
 
         private void BudgetsAndCategoriesToViewBag()

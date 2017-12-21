@@ -23,6 +23,16 @@ namespace FreelanceSite.Services.Implementations
                 .Where(u => u.UserName == username)
                 .ProjectTo<UserDetailsViewModel>()
                 .FirstOrDefault();
-                
+
+        public void UpdateCompletedProjects(string ownerId)
+        {
+            var user = this.db
+                           .Users
+                           .SingleOrDefault(u => u.Id == ownerId);
+
+            user.CompletedProjects += 1;
+
+            this.db.SaveChanges();
+        }
     }
 }

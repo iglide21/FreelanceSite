@@ -35,5 +35,9 @@ namespace FreelanceSite.Entities
         public User User { get; set; }
 
         public List<Bid> Bids { get; set; } = new List<Bid>();
+
+        public bool IsActive { get; set; }
+
+        public bool IsCompleted { get; set; }
     }
 }

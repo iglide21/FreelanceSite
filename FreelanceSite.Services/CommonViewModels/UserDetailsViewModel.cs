@@ -5,6 +5,7 @@
     using System;
     using AutoMapper;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class UserDetailsViewModel : IMapFrom<User>, IHaveCustomMapping
     {
@@ -26,13 +27,15 @@
 
         public string PhoneNumber { get; set; }
 
+        public int CompletedProjects { get; set; }
+
         public List<UserProjectDetailsViewModel> Projects { get; set; }
 
 
         public void Configure(Profile profile)
         {
             profile.CreateMap<User, UserDetailsViewModel>()
-                .ForMember(cfg => cfg.Projects, opt => opt.MapFrom(u => u.Projects));
+                .ForMember(cfg => cfg.Projects, opt => opt.MapFrom(u => u.Projects.Where(p => p.IsActive)));
         }
     }
 }

@@ -16,6 +16,15 @@
             <th>
                 Budget
             </th>
+            <th>
+                Active
+            </th>
+            <th>
+                Completed
+            </th>
+            <th>
+                Actions
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -35,9 +44,29 @@
                     @item.Budget.LowerBound - @item.Budget.HigherBound
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { area = "", id = item.Id,}) |
-                    @Html.ActionLink("Details", "Details", new { area = "", id = item.Id,}) |
-                    @Html.ActionLink("Delete", "Delete", new { area = "", id = item.Id,})
+                    @if (!item.IsActive)
+                    {
+                        @Html.ActionLink("Activate", "Activate", new { area = "Admin", id = item.Id, })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Deactivate", "Deactivate", new { area = "Admin", id = item.Id, })
+                    }
+                </td>
+                <td>
+                    @(item.IsCompleted ? "Yes" : "No")
+                </td>
+                <td>
+                    @if (item.IsActive)
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { area = "", id = item.Id, }) <span> |</span>
+                        @Html.ActionLink("Details", "Details", new { area = "", id = item.Id, }) <span> |</span>
+                        @Html.ActionLink("Delete", "Delete", new { area = "Admin", id = item.Id, })
+                    }
+                    else
+                    {
+                        <p>Activate project in order to perform actions</p>
+                    }
                 </td>
             </tr>
         }

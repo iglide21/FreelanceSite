@@ -27,21 +27,26 @@ namespace FreelanceSite.Web.Areas.Admin.Controllers
             return this.View(categories);
         }
 
-        public IActionResult Edit(int? id)
+        public IActionResult Create(CategoryCreateViewModel model)
         {
-            if (id == null)
-            {
-                return this.RedirectToAction(nameof(All));
-            }
+            this.categories.Create(model.Title);
 
-            var category = this.categories.GetForEdit(id);
+            return this.RedirectToAction(nameof(All));
+        }
 
-            if (category == null)
-            {
-                return this.RedirectToAction(nameof(All));
-            }
+        [HttpPost]
+        public IActionResult Edit(CategoryEditViewModel model)
+        {
+            this.categories.Update(model.Id,model.Title);
 
-            return this.View(category);
+            return this.RedirectToAction(nameof(All));
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            this.categories.Delete(id);
+
+            return this.RedirectToAction(nameof(All));
         }
     }
 }

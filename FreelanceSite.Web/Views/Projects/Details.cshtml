@@ -1,6 +1,5 @@
 ﻿@model ProjectDetailsViewModel
 
-
 <h1 class="row text-center">@Model.Title</h1>
 
 <div class="container" style="margin-top:50px">
@@ -14,11 +13,13 @@
             <p class="text-center"><strong style="font-size:25px;">$@Model.Budget.LowerBound - $@Model.Budget.HigherBound</strong></p>
         </div>
         <div class="pull-right">
-            @if (this.User.IsInRole("Administrator") 
+            @if (this.User.IsInRole("Administrator")
                 || this.User.IsInRole("Moderator")
                 || this.User.Identity.Name == Model.UserName)
             {
                 @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+                <br />
+                @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
             }
         </div>
     </div>
@@ -26,8 +27,11 @@
 
 <div class="container" style="margin-top:30px">
     <div class="well col-md-offset-2 col-md-8" style="background-color:white">
+        <h4 class="row pull-right" style="padding-right:20px">Posted by <a asp-controller="Users" asp-action="Details" asp-route-username="@Model.UserName">@Model.UserName</a></h4>
         <h3><strong>Project description</strong></h3>
         <div class="row" style="margin-top:30px; padding-left:15px; padding-right:30px;">
+            <br />
+            <br />
             @Model.Description
         </div>
         <br />
@@ -43,43 +47,56 @@
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1" id="logout">
             <div class="page-header">
-                <h3 class="reviews">Add bit</h3>
+                <h3 class="reviews">Add bid</h3>
             </div>
             <div class="comment-tabs">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Bids</h4></a></li>
-                    <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add bid</h4></a></li>
+                    @if (!(this.User.Identity.Name == Model.UserName))
+                    {
+                        <li><a href="#add-bit" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add bid</h4></a></li>
+                    }
                 </ul>
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="comments-logout">
                         <ul class="media-list">
-                            @if (Model.Bids.Count > 0)
+                            @if (Model.Bids.Count > 0)  
                             {
-                                @foreach (var item in Model.Bids)
-                                {
-                                    <li class="media">
-                                        <div class="media-body">
-                                            <span class="pull-right" style="padding-right:10px; padding-top:10px">@DateTime.Now</span>
-                                            <div class="well well-lg">
-                                                <h4 class="media-heading reviews">
-                                                    <a asp-controller="Users" asp-action="Details" asp-route-username="@item.OwnerUserName">
-                                                        @item.OwnerUserName
-                                                    </a>
-                                                </h4>
-                                                <div class="well-lg">
-                                                    <p class="media-comment">
-                                                        <strong>Period:</strong> @item.Period days
-                                                    </p>
-                                                    <p class="media-comment">
-                                                        <strong>Price:</strong> $@item.Value
-                                                        <a class="pull-right btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Edit</a>
-                                                    </p>
+
+                                <li class="media">
+                                    <div class="media-body">
+                                        <div class="well">
+                                            @foreach (var item in Model.Bids)
+                                            {
+                                                <div class="" style="background-color:white;
+                                                                     padding-left:20px;
+                                                                     padding-right:20px;
+                                                                     padding-top:10px;
+                                                                     margin-bottom:20px">
+                                                    <h4 class="media-heading reviews">
+                                                        <a asp-controller="Users" asp-action="Details" asp-route-username="@item.OwnerUserName">
+                                                            @item.OwnerUserName
+                                                        </a>
+                                                        <span class="pull-right" style="padding-right:20px">@item.CreationDate.ToAppropriateTime()</span>
+                                                    </h4>
+                                                    <div class="well-lg">
+                                                        @if (this.User.Identity.Name == Model.UserName)
+                                                        {
+                                                            <a class="btn btn-default pull-right" asp-controller="Bids" asp-action="Accept" asp-route-projectId="@item.Id" asp-route-ownerId="@item.UserId">Accept bid</a>
+                                                        }
+                                                        <p class="media-comment">
+                                                            <strong>Period:</strong> @item.Period days
+                                                        </p>
+                                                        <p class="media-comment">
+                                                            <strong>Price:</strong> $@item.Value
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            }
                                         </div>
-                                    </li>
-                                }
+                                    </div>
+                                </li>
                             }
                             else
                             {
@@ -95,26 +112,33 @@
                             }
                         </ul>
                     </div>
-                    <div class="tab-pane" id="add-comment">
-                        <form method="post" asp-controller="Bids" asp-action="Add" class="form-horizontal">
-                            <div style="padding-left:30px; padding-top:30px;">
-                                <div class="form-group col-md-offset-2 col-md-4">
-                                    <label>Period(in days):</label>
-                                    <input name="Period" type="number" class="form-control" />
+
+                    @if (!(this.User.Identity.Name == Model.UserName))
+                    {
+                        <div class="tab-pane" id="add-bit">
+                            <form method="post" asp-controller="Bids" asp-action="Add" class="form-horizontal">
+                                <div style="padding-left:30px; padding-top:30px;">
+                                    <h3>You can place only one bid.</h3>
+                                    <h3>Placing another will automatically update your last one.</h3>
                                     <br />
-                                    <label>Price($):</label>
-                                    <input name="Value" type="number" step="0.01" class="form-control" />
-                                    <input type="hidden" name="ProjectId" value="@Model.Id" />
-                                    <input type="hidden" name="OwnerUserName" value="@this.User.Identity.Name" />
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit bid</button>
+                                    <div class="form-group col-md-offset-2 col-md-4">
+                                        <label>Period(in days):</label>
+                                        <input name="Period" type="number" class="form-control" />
+                                        <br />
+                                        <label>Price($):</label>
+                                        <input name="Value" type="number" step="0.01" class="form-control" />
+                                        <input type="hidden" name="ProjectId" value="@Model.Id" />
+                                        <input type="hidden" name="OwnerUserName" value="@this.User.Identity.Name" />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit bid</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

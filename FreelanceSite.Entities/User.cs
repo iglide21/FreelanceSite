@@ -32,5 +32,7 @@ namespace FreelanceSite.Entities
         public DateTime LastSeen { get; set; }
 
         public string Biography { get; set; }
+
+        public int CompletedProjects { get; set; }
     }
 }

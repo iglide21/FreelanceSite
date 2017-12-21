@@ -22,11 +22,12 @@
                     <ul class="dropdown-menu">
                         <li><a asp-controller="Projects" asp-action="All">All</a></li>
                         <li><a asp-controller="Projects" asp-action="Create">Create</a></li>
+                        <li><a asp-controller="Users" asp-action="Details" asp-route-username="@this.User.Identity.Name">My Projects</a></li>
                     </ul>
                 @*</div>*@
             </li>
             <li>
-                <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                <a asp-area="" asp-controller="Users" asp-action="Details" asp-route-username="@this.User.Identity.Name" title="Manage">My Profile</a>
             </li>
             <li>
                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>

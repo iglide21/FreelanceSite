@@ -22,6 +22,12 @@
 
         public string Skills { get; set; }
 
+        public bool IsActive { get; set; }
+
+        public bool IsCompleted { get; set; }
+
+        //public List<Category> Categories { get; set; }
+
         public void Configure(Profile profile)
         {
             profile.CreateMap<Project, AdminProjectListingViewModel>()

@@ -2,7 +2,7 @@
 {
     <br />
     <div class="row">
-        <p class="row jumbotron text-success text-center col-md-offset-4 col-md-4">@this.TempData["SuccessMessage"]</p>
+        <p class="jumbotron text-success text-center col-md-offset-4 col-md-4">@this.TempData["SuccessMessage"]</p>
     </div>
 }
 
@@ -11,5 +11,13 @@
     <br />
     <div class="row">
         <p class="jumbotron text-danger text-center col-md-offset-4 col-md-4">@this.TempData["DeleteMessage"]</p>
+    </div>
+}   
+
+@if (this.TempData["NotExisting"] != null)
+{
+    <br />
+    <div class="row">
+        <p class="jumbotron text-danger text-center col-md-offset-4 col-md-4">@this.TempData["NotExisting"]</p>
     </div>
 }   

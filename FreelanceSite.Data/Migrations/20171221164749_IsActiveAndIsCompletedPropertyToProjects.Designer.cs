@@ -11,9 +11,10 @@ using System;
 namespace FreelanceSite.Data.Migrations
 {
     [DbContext(typeof(FreelanceSiteDbContext))]
-    partial class FreelanceSiteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171221164749_IsActiveAndIsCompletedPropertyToProjects")]
+    partial class IsActiveAndIsCompletedPropertyToProjects
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,8 +129,6 @@ namespace FreelanceSite.Data.Migrations
                     b.Property<int>("AccessFailedCount");
 
                     b.Property<string>("Biography");
-
-                    b.Property<int>("CompletedProjects");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();

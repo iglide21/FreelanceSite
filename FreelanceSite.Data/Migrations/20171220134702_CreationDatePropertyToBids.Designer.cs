@@ -11,9 +11,10 @@ using System;
 namespace FreelanceSite.Data.Migrations
 {
     [DbContext(typeof(FreelanceSiteDbContext))]
-    partial class FreelanceSiteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171220134702_CreationDatePropertyToBids")]
+    partial class CreationDatePropertyToBids
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,10 +86,6 @@ namespace FreelanceSite.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(500);
 
-                    b.Property<bool>("IsActive");
-
-                    b.Property<bool>("IsCompleted");
-
                     b.Property<string>("Skills")
                         .IsRequired();
 
@@ -128,8 +125,6 @@ namespace FreelanceSite.Data.Migrations
                     b.Property<int>("AccessFailedCount");
 
                     b.Property<string>("Biography");
-
-                    b.Property<int>("CompletedProjects");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();

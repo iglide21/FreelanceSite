@@ -8,10 +8,8 @@ namespace FreelanceSite.Services.CommonViewModels
 
     using static DataConstants;
 
-    public class CategoryEditViewModel : IMapFrom<Category>
+    public class CategoryCreateViewModel : IMapFrom<Category>
     {
-        public int Id { get; set; }
-
         [Required]
         [MinLength(CategoryTitleMinLength)]
         [MaxLength(CategoryTitleMaxLength)]

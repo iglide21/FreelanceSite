@@ -11,10 +11,14 @@ namespace FreelanceSite.Web.Controllers
     public class BidsController : Controller
     {
         private readonly IBidService bids;
+        private readonly IUserService users;
+        private readonly IWorkService projects;
 
-        public BidsController(IBidService bids)
+        public BidsController(IBidService bids,IUserService users,IWorkService projects)
         {
             this.bids = bids;
+            this.users = users;
+            this.projects = projects;
         }
 
         [HttpPost]
@@ -26,6 +30,14 @@ namespace FreelanceSite.Web.Controllers
             this.bids.Add(model.Value, model.Period,model.ProjectId, model.OwnerUsername, model.CreationDate);
 
             return this.RedirectToAction("Details","Projects",new { id = model.ProjectId});
+        }
+
+        public IActionResult Accept(string ownerId, int projectId)
+        {
+            this.users.UpdateCompletedProjects(ownerId);
+            this.projects.SetCompleted(projectId);
+
+            return this.RedirectToAction(nameof(ProjectsController.All), "Projects");
         }
     }
 }

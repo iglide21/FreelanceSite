@@ -1,78 +1,76 @@
-﻿<div class="container-full">
-    <div class="row">
+﻿@model List<AdminProjectListingViewModel>
 
-        <div class="col-lg-12 text-center v-center">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
 
-            <h1>Hello Landing</h1>
-            <br>
-            <form class="col-lg-12">
-                <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
-                    <input type="text" class="center-block form-control input-lg" title="Enter you email." placeholder="Enter your email address">
-                    <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
-                </div>
-            </form>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" style="width:100%; height:500px">
+        <div class="item active">
+            <img src="http://www.tribalreport.com/wp-content/uploads/2017/01/freelance.jpg" alt="image1">
         </div>
 
-    </div> <!-- /row -->
-
-    <div class="row">
-
-        <div class="col-lg-12 text-center v-center" style="font-size:39pt;">
-            <a href="#"><i class="icon-google-plus"></i></a> <a href="#"><i class="icon-facebook"></i></a>  <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-github"></i></a> <a href="#"><i class="icon-pinterest"></i></a>
+        <div class="item">
+            <img src="https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2017/10/p-1-no-we-wont-all-be-freelancers-in-the-future-of-work.jpg" alt="Chicago">
         </div>
 
-    </div>
-
-    <br><br><br><br><br>
-
-</div> <!-- /container full -->
-
-<div class="container">
-
-    <hr>
-
-    <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3>Hello.</h3></div>
-                <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
-                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
-                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
-                    Aliquam in felis sit amet augue.
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3>Hello.</h3></div>
-                <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
-                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
-                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
-                    Aliquam in felis sit amet augue.
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3>Hello.</h3></div>
-                <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
-                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
-                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
-                    Aliquam in felis sit amet augue.
-                </div>
-            </div>
+        <div class="item">
+            <img src="https://www.raconteur.net/wp-content/uploads/2016/09/Growth-of-the-freelance-industry-1280x720.jpg" alt="New York">
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <br><br>
-            <p class="pull-right"><a href="http://www.bootply.com">Template from Bootply</a> &nbsp; ©Copyright 2013 ACME<sup>TM</sup> Brand.</p>
-            <br><br>
-        </div>
-    </div>
-</div>  
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 
+<div class="container well-lg">
+    <h2 class="text-center text-capitalize">latest projects</h2>
+
+    <br />
+    
+    @if (Model.Count == 0)
+    {
+        <h1>No posted projects yet</h1>
+    }
+    else
+    {
+        @foreach (var project in Model)
+        {
+            <div class="col-md-3">
+                <div class="thumbnail">
+
+                    <div class="wrapper">
+                        <div class="caption post-content">
+                            <a asp-controller="Projects" asp-action="Details" asp-route-id="@project.Id" style="text-decoration:solid;  ">
+                                <h4>@project.Title</h4>
+                            </a>
+                            <span><strong>Bids:</strong> @project.BidsCount</span>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="post-meta">
+                            <small>
+                                project by
+                                <a asp-controller="Users" asp-action="Details" asp-route-username="@project.Owner">
+                                    @project.Owner
+                                </a>
+                            </small>
+                            <div class="price">@project.Budget.LowerBound - @project.Budget.HigherBound</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
