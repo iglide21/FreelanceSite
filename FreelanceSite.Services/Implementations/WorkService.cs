@@ -43,11 +43,11 @@
         }
 
         public IEnumerable<AdminProjectListingViewModel> AllActiveProjects()
-            => db
-                .Projects
-                .Where(p => p.IsCompleted == false && p.IsActive == true)
-                .ProjectTo<AdminProjectListingViewModel>()
-                .ToList();
+        => this.db
+               .Projects
+               .Where(p => p.IsCompleted == false && p.IsActive == true)
+               .ProjectTo<AdminProjectListingViewModel>()
+               .ToList();
 
         public IEnumerable<AdminProjectListingViewModel> AllProjects()
             => db
@@ -61,8 +61,8 @@
                 .Projects
                 .Where(p => p.IsActive == true && p.IsCompleted == false)
                 .Include(p => p.Categories)
-                .Where(p => p.Title.Contains(searchTerm)
-                         || p.Description.Contains(searchTerm));
+                .Where(p => p.Title.ToLower().Contains(searchTerm.ToLower())
+                         || p.Description.ToLower().Contains(searchTerm.ToLower()));
 
             if (categoryId != null)
             {
@@ -84,7 +84,7 @@
             }
 
             return this.db.Projects
-                .Where(p=>p.IsActive == true)
+                .Where(p => p.IsActive == true)
                 .Any(c => c.Id == id);
         }
 
@@ -172,7 +172,7 @@
         public ProjectDetailsViewModel GetProjectDetails(int? id)
         => this.db
             .Projects
-            .Where(p => p.Id == id 
+            .Where(p => p.Id == id
                 && p.IsActive == true && p.IsCompleted == false)
             .ProjectTo<ProjectDetailsViewModel>()
             .SingleOrDefault();
@@ -190,7 +190,7 @@
         => this.db
             .Projects
             .Where(p => p.Id == id)
-            .Select(p=>p.Title)
+            .Select(p => p.Title)
             .SingleOrDefault();
 
         public bool IsActive(int? id)

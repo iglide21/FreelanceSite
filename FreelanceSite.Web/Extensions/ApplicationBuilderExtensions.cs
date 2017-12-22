@@ -105,15 +105,18 @@ namespace FreelanceSite.Web.Extensions
 
                 if (!db.Categories.Any())
                 {
-                    for (int i = 1; i <= 10; i++)
-                    {
-                        Category cat = new Category
-                        {
-                            Title = $"Category{i}"
-                        };
-                        db.Categories.Add(cat);
-                        db.SaveChanges();
-                    }
+                    Category cat1 = new Category { Title = $"ASP.NET CORE" };
+                    Category cat2 = new Category { Title = $"ASP.NET" };
+                    Category cat3 = new Category { Title = $"C#" };
+                    Category cat4 = new Category { Title = $"JavaScript" };
+                    Category cat5 = new Category { Title = $"Java" };
+                    Category cat6 = new Category { Title = $"PHP" };
+                    Category cat7 = new Category { Title = $"Python" };
+                    Category cat8 = new Category { Title = $"Ruby" };
+                    Category cat9 = new Category { Title = $"Go" };
+
+                    db.Categories.AddRange(cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9);
+                    db.SaveChanges();
                 }
             }
 

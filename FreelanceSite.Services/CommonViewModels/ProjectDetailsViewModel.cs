@@ -27,6 +27,7 @@
         public void Configure(Profile profile)
         {
             profile.CreateMap<Project, ProjectDetailsViewModel>()
+                .ForMember(cfg => cfg.Id, opt => opt.MapFrom(p => p.Id))
                 .ForMember(cfg => cfg.UserName, opt => opt.MapFrom(p => p.User.UserName))
                 .ForMember(cfg => cfg.Budget, opt => opt.MapFrom(p => p.Budget))
                 .ForMember(cfg => cfg.Bids, opt => opt.MapFrom(p => p.Bids));

@@ -52,16 +52,20 @@
             <div class="comment-tabs">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Bids</h4></a></li>
-                    @if (!(this.User.Identity.Name == Model.UserName))
+                    @if (this.User.Identity.Name != null)
                     {
-                        <li><a href="#add-bit" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add bid</h4></a></li>
+                        @if (!(this.User.Identity.Name == Model.UserName))
+                        {
+                            <li><a href="#add-bit" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add bid</h4></a></li>
+                        }
                     }
+                    
                 </ul>
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="comments-logout">
                         <ul class="media-list">
-                            @if (Model.Bids.Count > 0)  
+                            @if (Model.Bids.Count > 0)
                             {
 
                                 <li class="media">
@@ -83,7 +87,7 @@
                                                     <div class="well-lg">
                                                         @if (this.User.Identity.Name == Model.UserName)
                                                         {
-                                                            <a class="btn btn-default pull-right" asp-controller="Bids" asp-action="Accept" asp-route-projectId="@item.Id" asp-route-ownerId="@item.UserId">Accept bid</a>
+                                                            <a class="btn btn-default pull-right" asp-controller="Bids" asp-action="Accept" asp-route-projectId="@item.ProjectId" asp-route-ownerId="@item.UserId">Accept bid</a>
                                                         }
                                                         <p class="media-comment">
                                                             <strong>Period:</strong> @item.Period days
@@ -113,31 +117,34 @@
                         </ul>
                     </div>
 
-                    @if (!(this.User.Identity.Name == Model.UserName))
+                    @if (this.User.Identity.Name != null)
                     {
-                        <div class="tab-pane" id="add-bit">
-                            <form method="post" asp-controller="Bids" asp-action="Add" class="form-horizontal">
-                                <div style="padding-left:30px; padding-top:30px;">
-                                    <h3>You can place only one bid.</h3>
-                                    <h3>Placing another will automatically update your last one.</h3>
-                                    <br />
-                                    <div class="form-group col-md-offset-2 col-md-4">
-                                        <label>Period(in days):</label>
-                                        <input name="Period" type="number" class="form-control" />
+                        @if (!(this.User.Identity.Name == Model.UserName))
+                        {
+                            <div class="tab-pane" id="add-bit">
+                                <form method="post" asp-controller="Bids" asp-action="Add" class="form-horizontal">
+                                    <div style="padding-left:30px; padding-top:30px;">
+                                        <h3>You can place only one bid.</h3>
+                                        <h3>Placing another will automatically update your last one.</h3>
                                         <br />
-                                        <label>Price($):</label>
-                                        <input name="Value" type="number" step="0.01" class="form-control" />
-                                        <input type="hidden" name="ProjectId" value="@Model.Id" />
-                                        <input type="hidden" name="OwnerUserName" value="@this.User.Identity.Name" />
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit bid</button>
+                                        <div class="form-group col-md-offset-2 col-md-4">
+                                            <label>Period(in days):</label>
+                                            <input name="Period" type="number" class="form-control" />
+                                            <br />
+                                            <label>Price($):</label>
+                                            <input name="Value" type="number" step="0.01" class="form-control" />
+                                            <input type="hidden" name="ProjectId" value="@Model.Id" />
+                                            <input type="hidden" name="OwnerUserName" value="@this.User.Identity.Name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit bid</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
+                                </form>
+                            </div>
+                        }
                     }
                 </div>
             </div>

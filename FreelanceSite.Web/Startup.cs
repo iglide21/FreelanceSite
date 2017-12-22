@@ -53,8 +53,8 @@
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //app.UseDatabaseMigration();
-            //app.SeedBudgetsAndCategories();
+            app.UseDatabaseMigration();
+            app.SeedBudgetsAndCategories();
 
             if (env.IsDevelopment())
             {
